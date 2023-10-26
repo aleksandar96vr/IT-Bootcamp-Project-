@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -87,7 +88,9 @@ public class BaseTest {
     @BeforeClass
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "C://Users//Aleksandar//Documents//Selenium//chromedriver.exe");
-        driver = new ChromeDriver();
+        ChromeOptions co = new ChromeOptions();
+        co.setBinary("C://Users//Aleksandar//Documents//Selenium//chrome.exe");
+        driver = new ChromeDriver(co);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         homePage = new HomePage(driver,wait);
         elementsPage=new ElementsPage(driver,wait);
